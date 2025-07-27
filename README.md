@@ -1,7 +1,3 @@
-Here’s a full **README.md** file tailored for your project that uses **React**, **Expo Go**, **Tailwind CSS**, **Android Studio**, **JS/HTML/CSS**, and **The Movie Database (TMDB) API** to create a mobile app with a self-updating movie database:
-
----
-
 ## **MovieDB Mobile App**
 
 A cross-platform mobile application built with **React**, **Expo Go**, **Tailwind CSS**, and **TMDB API** that displays a self-updating movie database. It fetches real-time data from **The Movie Database (TMDB)** API and allows users to browse trending, popular, and upcoming movies.
