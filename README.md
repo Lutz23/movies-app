@@ -1,50 +1,157 @@
-# Welcome to your Expo app 👋
+Here’s a full **README.md** file tailored for your project that uses **React**, **Expo Go**, **Tailwind CSS**, **Android Studio**, **JS/HTML/CSS**, and **The Movie Database (TMDB) API** to create a mobile app with a self-updating movie database:
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+## **MovieDB Mobile App**
 
-1. Install dependencies
+A cross-platform mobile application built with **React**, **Expo Go**, **Tailwind CSS**, and **TMDB API** that displays a self-updating movie database. It fetches real-time data from **The Movie Database (TMDB)** API and allows users to browse trending, popular, and upcoming movies.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+### **Features**
 
-   ```bash
-    npx expo start
-   ```
+* Live movie database updated automatically using **TMDB API**
+* Built with **React** and **Expo Go** for cross-platform compatibility
+* Styled with **Tailwind CSS** for fast UI development
+* Works seamlessly on **Android** (tested via Android Studio Emulator)
+* Clean, modular code using **JS, HTML, and CSS**
+* Responsive and optimized for performance
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### **Tech Stack**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+* **React (CRA + Hooks)**
+* **Expo Go** (for easy development and testing)
+* **Tailwind CSS** (via `nativewind`)
+* **Android Studio** (emulator for testing)
+* **TMDB API** (data source)
+* **JavaScript, HTML, CSS**
 
-## Get a fresh project
+---
 
-When you're ready, run:
+### **Installation**
+
+#### 1. **Clone the repository**
 
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/moviedb-mobile.git
+cd moviedb-mobile
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+#### 2. **Install dependencies**
 
-## Learn more
+```bash
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+#### 3. **Set up environment variables**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Create a `.env` file in the root directory:
 
-## Join the community
+```
+TMDB_API_KEY=your_tmdb_api_key_here
+```
 
-Join our community of developers creating universal apps.
+> Get your API key from [TMDB](https://www.themoviedb.org/documentation/api)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### 4. **Run the development server**
+
+```bash
+npx expo start
+```
+
+* Scan the QR code in the Expo Go app (on your phone) **OR**
+* Press `a` to open the **Android Studio Emulator**
+
+---
+
+### **API Integration**
+
+We use the **TMDB API** for fetching real-time movie data:
+
+Example request:
+
+```javascript
+const API_KEY = process.env.TMDB_API_KEY;
+const BASE_URL = "https://api.themoviedb.org/3";
+
+export async function fetchPopularMovies() {
+  const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  return await res.json();
+}
+```
+
+---
+
+### **Styling with Tailwind CSS**
+
+This project uses `nativewind` to apply Tailwind classes directly in React Native components:
+
+```bash
+npm install nativewind tailwindcss
+npx tailwindcss init
+```
+
+Example:
+
+```jsx
+import { View, Text } from 'react-native';
+
+export default function Header() {
+  return (
+    <View className="bg-black p-4">
+      <Text className="text-white text-xl font-bold">MovieDB</Text>
+    </View>
+  );
+}
+```
+
+---
+
+### **Build for Android**
+
+1. Install **Android Studio** and configure the emulator
+2. Run:
+
+   ```bash
+   npx expo run:android
+   ```
+3. Alternatively, generate an APK:
+
+   ```bash
+   eas build -p android --profile preview
+   ```
+
+---
+
+### **Project Structure**
+
+```
+moviedb-mobile/
+├── src/
+│   ├── api/          # API functions
+│   ├── components/   # Reusable UI components
+│   ├── screens/      # App screens (Home, Details, Search)
+│   └── styles/       # Tailwind config and global styles
+├── assets/           # Images and icons
+├── App.js            # Main entry point
+├── tailwind.config.js
+├── package.json
+└── .env
+```
+
+---
+
+### **Future Features**
+
+* User authentication with Firebase/Auth0
+* Favorite/watchlist movies
+* Offline caching with AsyncStorage
+* Push notifications for new releases
+
+---
+
+### **License**
+
+This project is licensed under the MIT License.
